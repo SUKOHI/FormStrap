@@ -15,8 +15,7 @@
 			case 'lg':
 				$size_class = ' btn-lg';
 				break;
-			
-			
+
 		}
 		
 	}
