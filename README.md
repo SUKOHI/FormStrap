@@ -24,7 +24,7 @@ And then  execute the next command to publish the view
     php artisan view:publish sukohi/form-strap
 
 Usage(with blade)
-====  
+====
 **Text**  
 
     {{ FormStrap::text('name_1', 'text') }}
