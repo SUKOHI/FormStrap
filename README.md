@@ -1,42 +1,46 @@
 FormStrap
 ====
 
-A PHP package mainly developed for Laravel to generate form input tags of Bootstrap that can automatically display errors, labels and alerts.
+A PHP package mainly developed for Laravel to generate input tags using Bootstrap that can automatically display errors, labels and alerts.  
+(This is for Laravel 4.2. [For Laravel 5](https://github.com/SUKOHI/FormStrap))
 
-Installation&settings for Laravel
+Installation
 ====
 
-After installation using composer, add the followings to the array in  app/config/app.php
+Add this package name in composer.json
 
-    'providers' => array(  
+    "require": {
+      "sukohi/form-strap": "1.*"
+    }
+
+Execute composer command.
+
+    composer update
+
+Register the service provider in app.php
+
+    'providers' => [
         ...Others...,  
         'Sukohi\FormStrap\FormStrapServiceProvider',
-    )
+    ]
 
-Also
+Also alias
 
-    'aliases' => array(  
+    'aliases' => [
         ...Others...,  
         'FormStrap' => 'Sukohi\FormStrap\Facades\FormStrap',
-    )
+    ]
+    
 And then  execute the next command to publish the view
 
     php artisan view:publish sukohi/form-strap
 
 Usage(with blade)
-====  
+====
+
 **Text**  
 
     {{ FormStrap::text('name_1', 'text') }}
-    
-    
-**Label**
-
-    {{ FormStrap::text('name_2', 'text')->label('LABEL_1') }}
-				
-    {{ FormStrap::text('name_3', 'text')->label('LABEL_2', ['class' => 'text-danger']) }}
-				
-    {{ FormStrap::text('name_4', 'text')->label('LABEL_3')->icon('<i class="fa fa-home"></i>', 'left') }}
     
 **Password**
 
@@ -117,7 +121,17 @@ Usage(with blade)
 			->cancel('url', 'CANCEL', ['class' => 'btn btn-default btn-sm']) }}
 	
     {{ FormStrap::submit('Submit')->cancel('url')->right() }}
+
     
+**with Label**
+
+    {{ FormStrap::text('name_2', 'text')->label('LABEL_1') }}
+				
+    {{ FormStrap::text('name_3', 'text')->label('LABEL_2', ['class' => 'text-danger']) }}
+				
+    {{ FormStrap::text('name_4', 'text')->label('LABEL_3')->icon('<i class="fa fa-home"></i>', 'left') }}
+
+
 **Attribute Names for Validation (hidden tags)**  
 
     {{ FormStrap::attributeNames($key = 'attribute_names') }}
